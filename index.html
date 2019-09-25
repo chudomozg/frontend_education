@@ -1,0 +1,668 @@
+<html>
+
+<head>
+    <script src="script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <h1>Education of Front End</h1>
+    <h2>JavaScript</h2>
+    <div class="jsEducation">
+        <div class="wrapper">
+            <div class="task">
+                Запишите цикл, который предлагает prompt ввести число, большее 100. Если посетитель ввёл другое число – попросить ввести ещё раз, и так далее. Цикл должен спрашивать число пока либо посетитель не введёт число, большее 100, либо не нажмёт кнопку Отмена
+                (ESC). Предполагается, что посетитель вводит только числа. Предусматривать обработку нечисловых строк в этой задаче необязательно.
+            </div>
+            <div class="answer">
+                <pre>
+                    let num;
+
+                    do {
+                    num = prompt("Введите число, большее 100?", 0);
+                    } while (num <= 100 && num);
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Перепишите код с использованием одной конструкции switch:
+                <pre>
+                    const number = +prompt('Введите число между 0 и 3', '');
+
+                    if (number === 0) {
+                      alert('Вы ввели число 0');
+                    }
+                    
+                    if (number === 1) {
+                      alert('Вы ввели число 1');
+                    }
+                    
+                    if (number === 2 || number === 3) {
+                      alert('Вы ввели число 2, а может и 3');
+                    }
+                         
+                </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        const number = +prompt('Введите число между 0 и 3', '');
+                        switch (number) {
+                            case 0:
+                                alert('Вы ввели 0');
+                                break;
+                            case 1:
+                                alert('Вы ввели 1');
+                                break;
+                            case 2:
+                            case 3:
+                                alert('Вы ввели что то другое');
+                        }
+                </pre>
+
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Следующая функция возвращает true, если параметр age больше 18. В ином случае она задаёт вопрос confirm и возвращает его результат. Перепишите функцию, чтобы она делала то же самое, но без if, в одну строку.
+                <pre>
+                            function checkAge(age) {
+                                if (age > 18) {
+                                  return true;
+                                } else {
+                                  return confirm('Родители разрешили?');
+                                }
+                              }
+                    </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        function checkAge(age) {
+                            return (age > 18) ? true : confirm('Родители разрешили?');
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Замените код Function Expression стрелочной функцией:
+                <pre>
+                        function ask(question, yes, no) {
+                            if (confirm(question)) yes()
+                            else no();
+                          }
+                          
+                          ask(
+                            "Вы согласны?",
+                            function() { alert("Вы согласились."); },
+                            function() { alert("Вы отменили выполнение."); }
+                          );
+                </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        function ask(question, yes, no) {
+                            if (confirm(question)) yes()
+                            else no();
+                        }
+                    
+                        ask(
+                            "Вы согласны?",
+                            () => alert("Вы согласились."),
+                            () => alert("Вы отменили выполнение.")
+                        );
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+
+                Напишите код, выполнив задание из каждого пункта отдельной строкой: Создайте пустой объект user. Добавьте свойство name со значением John. Добавьте свойство surname со значением Smith. Измените значение свойства name на Pete. Удалите свойство name из
+                объекта.
+            </div>
+            <div class="answer"><pre>
+                    let user = {};
+                    user.name = 'John';
+                    user.surname = 'Smith';
+                    user.name = 'Pete';
+                    delete user.name;
+                    for (let key in user) {
+                        alert(key);
+                    }
+            </pre></div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию isEmpty(obj), которая возвращает true, если у объекта нет свойств, иначе false. Должно работать так:
+                <pre>
+        let schedule = {};
+
+        alert( isEmpty(schedule) ); // true
+        
+        schedule["8:30"] = "get up";
+        
+        alert( isEmpty(schedule) ); // false
+                </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        function isEmpty(obj) {
+                            for (let key in obj) {
+                                return false;
+                            }
+                            return true;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                У нас есть объект, в котором хранятся зарплаты нашей команды:
+                <pre>
+                            let salaries = {
+                                John: 100,
+                                Ann: 160,
+                                Pete: 130
+                              }
+                    </pre> Напишите код для суммирования всех зарплат и сохраните результат в переменной sum. Должно получиться 390. Если объект salaries пуст, то результат должен быть 0.
+            </div>
+            <div class="answer">
+                <pre>
+                        let salaries = {
+                            John: 100,
+                            Ann: 160,
+                            Pete: 130
+                        }
+                    
+                        let sum = 0;
+                        for (let key in salaries) {
+                            sum += salaries[key];
+                        }
+                    
+                        alert(sum);
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2. Например:
+                <pre>
+                        // до вызова функции
+                        let menu = {
+                          width: 200,
+                          height: 300,
+                          title: "My menu"
+                        };
+                        
+                        multiplyNumeric(menu);
+                        
+                        // после вызова функции
+                        menu = {
+                          width: 400,
+                          height: 600,
+                          title: "My menu"
+                        };
+                </pre>
+
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // до вызова функции
+                            let menu = {
+                                width: 200,
+                                height: 300,
+                                title: "My menu"
+                            };
+                        
+                            multiplyNumeric(menu);
+                        
+                            console.log(menu);
+                        });
+                        
+                        function multiplyNumeric(obj) {
+                            for (let key in obj) {
+                                obj[key] = (typeof obj[key] == 'number') ? obj[key] * 2 : obj[key];
+                            }
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                оздайте объект calculator (калькулятор) с тремя методами: read() (читать) запрашивает два значения и сохраняет их как свойства объекта. sum() (суммировать) возвращает сумму сохранённых значений. mul() (умножить) перемножает сохранённые значения и возвращает
+                результат.
+                <pre>
+                            let calculator = {
+                                // ... ваш код ...
+                              };
+                              
+                              calculator.read();
+                              alert( calculator.sum() );
+                              alert( calculator.mul() );
+                    </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        let calculator = {
+                            read() {
+                                this.a = prompt('a', 0);
+                                this.b = prompt('b', 0);
+                            },
+                            sum() {
+                                return Number(this.a) + Number(this.b);
+                            },
+                            mul() {
+                                return Number(this.a) * Number(this.b);
+                            }
+                        };
+                    
+                        calculator.read();
+                        alert(calculator.sum());
+                        alert(calculator.mul());
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Создайте функцию-конструктор Calculator, который создаёт объекты с тремя методами: read() запрашивает два значения при помощи prompt и сохраняет их значение в свойствах объекта. sum() возвращает сумму введённых свойств. mul() возвращает произведение введённых
+                свойств. Например:
+                <pre>
+                            let calculator = new Calculator();
+                            calculator.read();
+                            
+                            alert( "Sum=" + calculator.sum() );
+                            alert( "Mul=" + calculator.mul() );
+                    </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let calculator = new Calculator();
+                            calculator.read();
+                        
+                            alert("Sum=" + calculator.sum());
+                            alert("Mul=" + calculator.mul());
+                        });
+                        
+                        function Calculator() {
+                            this.read = function() {
+                                this.a = +prompt('a', 0);
+                                this.b = +prompt('b', 0);
+                            };
+                            this.sum = function() {
+                                return this.a + this.b;
+                            };
+                            this.mul = function() {
+                                return this.a * this.b;
+                            };
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Создайте функцию-конструктор Calculator, который создаёт объекты с тремя методами: read() запрашивает два значения при помощи prompt и сохраняет их значение в свойствах объекта. sum() возвращает сумму введённых свойств. mul() возвращает произведение введённых
+                свойств. Например:
+                <pre>
+                            let calculator = new Calculator();
+                            calculator.read();
+                            
+                            alert( "Sum=" + calculator.sum() );
+                            alert( "Mul=" + calculator.mul() );
+                    </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let calculator = new Calculator();
+                            calculator.read();
+                        
+                            alert("Sum=" + calculator.sum());
+                            alert("Mul=" + calculator.mul());
+                        });
+                        
+                        function Calculator() {
+                            this.read = function() {
+                                this.a = +prompt('a', 0);
+                                this.b = +prompt('b', 0);
+                            };
+                            this.sum = function() {
+                                return this.a + this.b;
+                            };
+                            this.mul = function() {
+                                return this.a * this.b;
+                            };
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию-конструктор Accumulator(startingValue). Объект, который она создаёт, должен уметь следующее: Хранить «текущее значение» в свойстве value. Начальное значение устанавливается в аргументе конструктора startingValue. Метод read() использует
+                prompt для получения числа и прибавляет его к свойству value. Таким образом, свойство value является текущей суммой всего, что ввёл пользователь при вызовах метода read(), с учётом начального значения startingValue.
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let accumulator = new Accumulator(1); // начальное значение 1
+                        
+                            accumulator.read(); // прибавит ввод prompt к текущему значению
+                            accumulator.read(); // прибавит ввод prompt к текущему значению
+                        
+                            alert(accumulator.value); // выведет сумму этих значений
+                        });
+                        
+                        function Accumulator(startingValue) {
+                            this.value = startingValue;
+                            this.read = function() {
+                                this.value += +prompt('a?', 0);
+                            }
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Создайте функцию readNumber, которая будет запрашивать ввод числового значения до тех пор, пока посетитель его не введёт. Функция должна возвращать числовое значение. Также надо разрешить пользователю остановить процесс ввода, отправив пустую строку или
+                нажав «Отмена». В этом случае функция должна вернуть null.
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            alert(readNumber());
+                        });
+                        
+                        function readNumber() {
+                            let num;
+                            do {
+                                num = +prompt('введите число', '');
+                            } while (!isFinite(num));
+                            if ((num === null) || (num === '')) return null;
+                        
+                            return num;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию ucFirst(str), возвращающую строку str с заглавным первым символом.
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+document.addEventListener('DOMContentLoaded', function() {
+    let s = ucFirst('вася');
+    alert(s);
+});
+
+function ucFirst(str) {
+    str = str.trim();
+    return str[0].toUpperCase() + str.substring(1, str.length);
+}
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию checkSpam(str), возвращающую true, если str содержит 'viagra' или 'XXX', а иначе false. Функция должна быть нечувствительна к регистру:
+            </div>
+            <div class="answer">
+                <pre>
+                        function checkSpam(str) {
+                            str = str.toLowerCase();
+                            if (str.includes('xxx') || str.includes('viagra')) return true;
+                            return false;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Создайте функцию truncate(str, maxlength), которая проверяет длину строки str и, если она превосходит maxlength, заменяет конец str на "…", так, чтобы её длина стала равна maxlength. Результатом функции должна быть та же строка, если усечение не требуется,
+                либо, если необходимо, усечённая строка.
+            </div>
+            <div class="answer">
+                <pre>
+                        function truncate(str, maxlength) {
+                            return (str.length > maxlength) ? (str.slice(0, maxlength - 1) + '...') : str;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Давайте произведём 5 операций с массивом. Создайте массив styles с элементами «Джаз» и «Блюз». Добавьте «Рок-н-ролл» в конец. Замените значение в середине на «Классика». Ваш код для поиска значения в середине должен работать для массивов с любой длиной.
+                Удалите первый элемент массива и покажите его. Вставьте «Рэп» и «Регги» в начало массива.
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let styles = ['Джаз', 'Блюз'];
+                            styles.push('Рок-н-ролл');
+                            styles = swapInCenter(styles, 'Классика');
+                            alert(styles.shift());
+                            styles.unshift('Рэп', 'Регги');
+                            alert(styles);
+                        });
+                        
+                        function swapInCenter(arr, data) {
+                            let index = Math.floor(arr.length / 2);
+                            arr[index] = data;
+                            return arr;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию sumInput(), которая: Просит пользователя ввести значения, используя prompt и сохраняет их в массив. Заканчивает запрашивать значения, когда пользователь введёт не числовое значение, пустую строку или нажмёт «Отмена». Подсчитывает и возвращает
+                сумму элементов массива. P.S. Ноль 0 – считается числом, не останавливайте ввод значений при вводе «0».
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            alert(sumInput());
+                        });
+                        
+                        function sumInput() {
+                            let arr = [];
+                            let input;
+                            while (true) {
+                                input = prompt('введите число', 0);
+                                if (input === null || input === '' || !isFinite(input)) break;
+                                arr.push(+input);
+                            }
+                        
+                            let sum = 0;
+                            for (let el of arr) {
+                                sum += el;
+                            }
+                            return sum;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию camelize(str), которая преобразует строки вида «my-short-string» в «myShortString». То есть дефисы удаляются, а все слова после них получают заглавную букву. Примеры:
+            </div>
+            <div class="answer"><pre>
+                    function camelize(str) {
+                        return str.split('-')
+                            .map((item, index) => index == 0 ? item : item[0].toUpperCase() + item.slice(1))
+                            .join('');
+                    }
+            </pre></div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию filterRange(arr, a, b), которая принимает массив arr, ищет в нём элементы между a и b и отдаёт массив этих элементов. Функция должна возвращать новый массив и не изменять исходный.
+            </div>
+            <div class="answer">
+                <pre>
+                        function filterRange(arr, a, b) {
+                            return arr.filter(item => (a <= item && item <= b));
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b. То есть, проверка имеет вид a ≤ arr[i] ≤ b. Функция должна изменять принимаемый массив и ничего не возвращать.
+            </div>
+            <div class="answer">
+                <pre>
+                        function filterRangeInPlace(arr, a, b) {
+                            arr.forEach(function(item, index) {
+                                if (a >= item || item >= b)
+                                    arr.splice(index, 1);
+                            })
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                У нас есть массив строк arr. Нужно получить отсортированную копию, но оставить arr неизменённым. Создайте функцию copySorted(arr), которая будет возвращать такую копию.
+            </div>
+            <div class="answer">
+                <pre>
+                        function copySorted(arr) {
+                            return arr.slice().sort();
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre>Создайте функцию конструктор Calculator, которая создаёт «расширяемые» объекты калькулятора.
+
+                        Задание состоит из двух частей.
+                        
+                        Во-первых, реализуйте метод calculate(str), который принимает строку типа "1 + 2" в формате «ЧИСЛО оператор ЧИСЛО» (разделено пробелами) и возвращает результат. Метод должен понимать плюс + и минус -.
+                        
+                        Пример использования:
+                        
+                        let calc = new Calculator;
+                        
+                        alert( calc.calculate("3 + 7") ); // 10
+                        Затем добавьте метод addMethod(name, func), который добавляет в калькулятор новые операции. Он принимает оператор name и функцию с двумя аргументами func(a,b), которая описывает его.
+                        
+                        Например, давайте добавим умножение *, деление / и возведение в степень **:
+                        
+                        let powerCalc = new Calculator;
+                        powerCalc.addMethod("*", (a, b) => a * b);
+                        powerCalc.addMethod("/", (a, b) => a / b);
+                        powerCalc.addMethod("**", (a, b) => a ** b);
+                        
+                        let result = powerCalc.calculate("2 ** 3");
+                        alert( result ); // 8
+                        Для этой задачи не нужны скобки или сложные выражения.
+                        Числа и оператор разделены ровно одним пробелом.
+                        Не лишним будет добавить обработку ошибок.</pre>
+            </div>
+            <div class="answer">
+                <pre>function Calculator() {
+
+                        this.methods = {
+                          "-": (a, b) => a - b,
+                          "+": (a, b) => a + b
+                        };
+                      
+                        this.calculate = function(str) {
+                      
+                          let split = str.split(' '),
+                            a = +split[0],
+                            op = split[1],
+                            b = +split[2]
+                      
+                          if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+                            return NaN;
+                          }
+                      
+                          return this.methods[op](a, b);
+                        }
+                      
+                        this.addMethod = function(name, func) {
+                          this.methods[name] = func;
+                        };
+                      }</pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre></pre>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
