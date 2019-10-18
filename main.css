@@ -7,3 +7,18 @@
     background: #cecece;
     padding: 60px;
 }
+
+.gallery__main {
+    width: 550px;
+    height: 400px;
+    padding: 5px;
+}
+
+.gallery_items-wrapper__item {
+    width: 100px;
+    height: 100px;
+    padding: 3px;
+    margin: 2px;
+    object-fit: cover;
+    cursor: pointer;
+}

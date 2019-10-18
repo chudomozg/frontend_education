@@ -2,6 +2,7 @@
 
 <head>
     <script src="script.js" type="text/javascript"></script>
+    <script src="extended-clock.js" type="text/javascript"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 
@@ -600,66 +601,528 @@ function ucFirst(str) {
         </div>
         <div class="wrapper">
             <div class="task">
-                <pre></pre>
+                <pre>
+                        У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён.
+
+                        Например:
+                        
+                        let vasya = { name: "Вася", age: 25 };
+                        let petya = { name: "Петя", age: 30 };
+                        let masha = { name: "Маша", age: 28 };
+                        
+                        let users = [ vasya, petya, masha ];
+                        
+                        let names = /* ... ваш код */
+                        
+                        alert( names ); // Вася, Петя, Маша
+                </pre>
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>
+                        function arrObjToArrNames(arr) {
+                            // let names = [];
+                            // for (let user of arr) {
+                            //     names.push(user.name);
+                            // }
+                            // return names;
+                        
+                            return arr.map(item => item.name);
+                        }
+                </pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
-                <pre></pre>
+                <pre>
+                        У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
+
+                        Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName – состоит из name и surname.
+                </pre>
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+                            let petya = { name: "Петя", surname: "Иванов", id: 2 };
+                            let masha = { name: "Маша", surname: "Петрова", id: 3 };
+                        
+                            let users = [vasya, petya, masha];
+                        
+                            let usersMapped = users.map(item => ({
+                                id: item.id,
+                                fullName: item.name + ' ' + item.surname,
+                            }))
+                        
+                            /*
+                            usersMapped = [
+                              { fullName: "Вася Пупкин", id: 1 },
+                              { fullName: "Петя Иванов", id: 2 },
+                              { fullName: "Маша Петрова", id: 3 }
+                            ]
+                            */
+                            console.log(usersMapped);
+                            alert(usersMapped[0].id) // 1
+                            alert(usersMapped[0].fullName) // Вася Пупкин
+                        });
+                </pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
+                Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
                 <pre></pre>
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>
+                        function sortByAge(users) {
+                            return users.sort((a, b) => a.age - b.age);
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">Напишите функцию shuffle(array), которая перемешивает (переупорядочивает случайным образом) элементы массива. Многократные прогоны через shuffle могут привести к разным последовательностям элементов. Например:
+
+                <pre>
+                    let arr = [1, 2, 3];
+                    
+                        shuffle(arr);
+                        // arr = [3, 2, 1]
+                        
+                        shuffle(arr);
+                        // arr = [2, 1, 3]
+                        
+                        shuffle(arr);
+                        // arr = [3, 1, 2]</pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        function shuffle(arr) {
+                            return arr.sort(() => (Math.random() - 0.5));
+                        }
+                </pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
-                <pre></pre>
+                Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст. Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N. Например:
+                <pre>
+                        let vasya = { name: "Вася", age: 25 };
+                        let petya = { name: "Петя", age: 30 };
+                        let masha = { name: "Маша", age: 29 };
+                        
+                        let arr = [ vasya, petya, masha ];
+                        
+                        alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28</pre>
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>function getAverageAge(arr) {
+                        return arr.reduce((sum, item) => sum + item.age / arr.length, 0);
+                    }</pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
-                <pre></pre>
+                Допустим, у нас есть массив arr. Создайте функцию unique(arr), которая вернёт массив уникальных, не повторяющихся значений массива arr. Например:
+                <pre>
+                        function unique(arr) {
+                            /* ваш код */
+                          }
+                          
+                          let values = ["Hare", "Krishna", "Hare", "Krishna",
+                            "Krishna", "Krishna", "Hare", "Hare", ":-O"
+                          ];
+                          
+                          alert( unique(values) ); // Hare, Krishna, :-O
+                </pre>
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>
+                        function unique(arr) {
+                            return Array.from(new Set(arr));
+                        }
+                </pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
-                <pre></pre>
+                Анаграммы – это слова, у которых те же буквы в том же количестве, но они располагаются в другом порядке. Например: nap - pan ear - are - era cheaters - hectares - teachers Напишите функцию aclean(arr), которая возвращает массив слов, очищенный от анаграмм.
+                Например:
+                <pre>let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+                        alert( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"</pre>
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>
+                        function aclean(arr) {
+                            let map = new Map();
+                        
+                            for (let el of arr) {
+                                let sorted = el.toLowerCase().split("").sort().join("");
+                                map.set(sorted, el)
+                            }
+                        
+                            return Array.from(map.values());
+                        }
+                </pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
-                <pre></pre>
+                Есть массив сообщений:
+                <pre>
+                        let messages = [
+                        {text: "Hello", from: "John"},
+                        {text: "How goes?", from: "John"},
+                        {text: "See you soon", from: "Alice"}
+                      ];
+                </pre> У вас есть к ним доступ, но управление этим массивом происходит где-то ещё. Добавляются новые сообщений и удаляются старые, и вы не знаете в какой момент это может произойти. Имея такую вводную информацию, решите,
+                какую структуру данных вы могли бы использовать для ответа на вопрос «было ли сообщение прочитано?». Структура должна быть подходящей, чтобы можно было однозначно сказать, было ли прочитано это сообщение для каждого объекта сообщения.
+                P.S. Когда сообщение удаляется из массива messages, оно должно также исчезать из структуры данных. P.P.S. Нам не следует модифицировать сами объекты сообщений, добавлять туда свойства. Если сообщения принадлежат какиму-то другому коду,
+                то это может привести к плохим последствиям.
             </div>
             <div class="answer">
-                <pre></pre>
+                <pre>
+                        let messages = [
+                        { text: "Hello", from: "John" },
+                        { text: "How goes?", from: "John" },
+                        { text: "See you soon", from: "Alice" }
+                    ];
+                
+                    let isReaded = new WeakSet();
+                    isReaded.add(messages[0]);
+                    isReaded.add(messages[0]); //Ничего измениться не должно
+                    alert(isReaded.has(messages[0])); //true если прочитано
+                </pre>
             </div>
         </div>
         <div class="wrapper">
             <div class="task">
+                сть объект salaries с произвольным количеством свойств, содержащих заработные платы. Напишите функцию sumSalaries(salaries), которая возвращает сумму всех зарплат с помощью метода Object.values и цикла for..of. Если объект salaries пуст, то результат
+                должен быть 0.
                 <pre></pre>
             </div>
             <div class="answer">
+                <pre>"use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let salaries = {
+                                "John": 100,
+                                "Pete": 300,
+                                "Mary": 250
+                            };
+                        
+                            alert(sumSalaries(salaries)); // 650
+                        });
+                        
+                        function sumSalaries(obj) {
+                            let sum = 0;
+                            for (let val of Object.values(obj)) {
+                                sum += val;
+                            }
+                            return sum;
+                        }
+                    </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                У нас есть объект:
+                <pre>
+                        let user = {
+                            name: "John",
+                            years: 30
+                          };
+                </pre> Напишите деструктурирующее присваивание, которое: свойство name присвоит в переменную name. свойство years присвоит в переменную age. свойство isAdmin присвоит в переменную isAdmin (false, если нет такого свойства)
+            </div>
+            <div class="answer">
+                <pre>
+                        let user = { name: "John", years: 30 };
+
+                        let { name: name, years: age, isAdmin = false } = user;
+                    
+                        alert(name); // John
+                        alert(age); // 30
+                        alert(isAdmin); // false
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                У нас есть объект salaries с зарплатами:
+                <pre>let salaries = {
+                        "John": 100,
+                        "Pete": 300,
+                        "Mary": 250
+                      };
+                </pre> Создайте функцию topSalary(salaries), которая возвращает имя самого высокооплачиваемого сотрудника. Если объект salaries пустой, то нужно вернуть null. Если несколько высокооплачиваемых сотрудников, можно вернуть
+                любого из них. P.S. Используйте Object.entries и деструктурирование, чтобы перебрать пары ключ/значение.
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let salaries = {
+                                "John": 100,
+                                "Pete": 300,
+                                "Mary": 250
+                            };
+                            alert(topSallery(salaries));
+                        });
+                        
+                        function topSallery(obj) {
+                            let top = {};
+                            top.name = null;
+                            top.sal = 0;
+                            for (let [epname, sallery] of Object.entries(obj)) {
+                                if (sallery > top.sal) {
+                                    top.sal = sallery;
+                                    top.name = epname;
+                                }
+                            }
+                            return top.name;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                У нас есть встроенный метод arr.filter(f) для массивов. Он фильтрует все элементы с помощью функции f. Если она возвращает true, то элемент добавится в возвращаемый массив. Сделайте набор «готовых к употреблению» фильтров: inBetween(a, b) – между a и
+                b (включительно). inArray([...]) – находится в данном массиве. Они должны использоваться таким образом: arr.filter(inBetween(3,6)) – выбирает только значения межу 3 и 6 (включительно). arr.filter(inArray([1,2,3])) – выбирает только элементы,
+                совпадающие с одним из элементов массива
                 <pre></pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+
+                        document.addEventListener('DOMContentLoaded', function() {
+                            /* .. ваш код для inBetween и inArray */
+                            let arr = [1, 2, 3, 4, 5, 6, 7];
+                        
+                            alert(arr.filter(inBetween(3, 6))); // 3,4,5,6
+                        
+                            alert(arr.filter(inArray([1, 2, 10]))); // 1,2
+                        });
+                        
+                        function inBetween(a, b) {
+                            return function(x) {
+                                return x >= a && x <= b;
+                            }
+                        }
+                        
+                        function inArray(arr) {
+                            return function(x) {
+                                return arr.includes(x);
+                            }
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                У нас есть массив объектов, который нужно отсортировать:
+                <pre>let users = [
+                        { name: "John", age: 20, surname: "Johnson" },
+                        { name: "Pete", age: 18, surname: "Peterson" },
+                        { name: "Ann", age: 19, surname: "Hathaway" }
+                      ];</pre> Обычный способ был бы таким:
+                <pre>
+                            // по имени (Ann, John, Pete)
+                            users.sort((a, b) => a.name > b.name ? 1 : -1);
+                            
+                            // по возрасту (Pete, Ann, John)
+                            users.sort((a, b) => a.age > b.age ? 1 : -1);
+                      </pre> Можем ли мы сделать его короче, скажем, вот таким?
+                <pre>
+                            users.sort(byField('name'));
+                            users.sort(byField('age'));
+                      </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let users = [
+                                { name: "John", age: 20, surname: "Johnson" },
+                                { name: "Pete", age: 18, surname: "Peterson" },
+                                { name: "Ann", age: 19, surname: "Hathaway" }
+                            ];
+                            users.sort(byField('name'));
+                            users.forEach(user => alert(user.name));
+                            users.sort(byField('age'));
+                            users.forEach(user => alert(user.name));
+                        });
+                        
+                        function byField(str) {
+                            return (a, b) => a[str] > b.str ? 1 : -1;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Измените код makeCounter() так, чтобы счётчик мог увеличивать и устанавливать значение: counter() должен возвращать следующее значение (как и раньше). counter.set(value) должен устанавливать счётчику значение value. counter.decrease() должен уменьшать
+                значение счётчика на 1. Посмотрите код из песочницы с полным примером использования. P.S. Для того, чтобы сохранить текущее значение счётчика, можно воспользоваться как замыканием, так и свойством функции. Или сделать два варианта решения:
+                и так, и так.
+                <pre>
+                        function makeCounter() {
+                            let count = 0;
+                            return function() {
+                              return count++;
+                            };
+                          }
+                          
+                          let counter1 = makeCounter();
+                          let counter2 = makeCounter();
+                          
+                          alert( counter1() ); // 0
+                          alert( counter1() ); // 1
+                          
+                          alert( counter2() ); // 0 (независимо)
+                </pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let counter1 = makeCounter();
+                            let counter2 = makeCounter();
+                        
+                            counter1();
+                            counter1();
+                            alert(counter1());
+                            // alert(counter2());
+                        
+                            counter1.set(0);
+                            alert(counter1());
+                        
+                            counter2();
+                            counter2.decrease();
+                            counter2.decrease();
+                            alert(counter2());
+                        });
+                        
+                        function makeCounter() {
+                        
+                            function counter() {
+                                return counter.count++;
+                            }
+                        
+                            counter.count = 0;
+                        
+                            counter.set = function setter(value) {
+                                counter.count = value;
+                            }
+                        
+                            counter.decrease = function dec() {
+                                counter.count--;
+                            }
+                        
+                            return counter;
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Добавьте всем функциям в прототип метод defer(ms), который вызывает функции через ms миллисекунд.
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        document.addEventListener('DOMContentLoaded', function() {
+
+                            Function.prototype.defer = function(timeOut) {
+                                setTimeout(this, timeOut);
+                            }
+                        
+                            function f() {
+                                alert("Hello!");
+                            }
+                        
+                            f.defer(1000); // выведет "Hello!" через 1 секунду
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Встроенная функция setTimeout использует колбэк-функции. Создайте альтернативу, использующую промисы. Функция delay(ms) должна возвращать промис, который перейдёт в состояние «выполнен» через ms миллисекунд, так чтобы мы могли добавить к нему .then:
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        "use strict";
+
+                        document.addEventListener('DOMContentLoaded', function() {
+                            delayPromise(3000).then(() => alert('выполнилось через 3 секунды'));
+                        });
+                        
+                        function delayPromise(ms) {
+                            return new Promise((resolve) => setTimeout(() => resolve(), ms));
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task preventDefaultLink">
+                <legend>#contents</legend>
+                <p>
+                    Как насчёт того, чтобы прочитать <a href="http://wikipedia.org">Википедию</a> или посетить <a href="http://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+                </p>
+                <pre></pre>
+            </div>
+            <div class="answer">
+                <pre>
+                        function preventGoToLink() {
+                            let wrapper = document.querySelector('.preventDefaultLink');
+                            wrapper.onclick = function(event) {
+                                function handleLink(href) {
+                                    let isLeaving = confirm(`Leave for ${href}?`);
+                                    if (!isLeaving) return false;
+                                }
+                        
+                                let target = event.target.closest('a');
+                        
+                                if (target && wrapper.contains(target)) {
+                                    return handleLink(target.getAttribute('href'));
+                                }
+                            }
+                        }
+                </pre>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="task">
+                Создайте галерею изображений, в которой основное изображение изменяется при клике на уменьшенный вариант.
+                <div class="gallery">
+                    <img src='' class="gallery__main">
+                    <div class="gallery_items-wrapper">
+                        <img src="img/img2-lg.jpg" alt="" class="gallery_items-wrapper__item gallery_items-wrapper__item_active">
+                        <img src="img/img3-lg.jpg" alt="" class="gallery_items-wrapper__item">
+                        <img src="img/img4-lg.jpg" alt="" class="gallery_items-wrapper__item">
+                        <img src="img/img5-lg.jpg" alt="" class="gallery_items-wrapper__item">
+                        <img src="img/img6-lg.jpg" alt="" class="gallery_items-wrapper__item">
+                    </div>
+                </div>
+            </div>
+            <div class="answer">
+                <pre>
+                        function myGallery(element_selector) {
+                            let main = document.querySelector(`${element_selector} .gallery__main`);
+                            let element = document.querySelector(`${element_selector}`);
+                            let wrapper = document.querySelector(`.gallery_items-wrapper`);
+                            main.src = document.querySelector(`.gallery_items-wrapper__item_active`).src;
+                        
+                            wrapper.onclick = function(event) {
+                                if (event.target.tagName == 'IMG') {
+                                    main.src = event.target.src;
+                                }
+                            }
+                        }
+                </pre>
             </div>
         </div>
     </div>
